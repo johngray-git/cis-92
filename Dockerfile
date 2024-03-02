@@ -9,11 +9,11 @@ RUN pip install Django==4.2.9
 # Install psutil package
 RUN pip install psutil
 
+# Copy host Python code into the container
+COPY mysite /mysite
+
 # Create Database directory
 RUN mkdir /data
-
-# Copy the Python code into the container
-COPY mysite /mysite
 
 # Set environment variables 
 ENV PORT=8000 
@@ -26,5 +26,5 @@ ENV DATA_DIR="/data"
 # Set the working directory
 WORKDIR /mysite 
 
-# Default command to execute in the container
+# Default command to execute in the container when it starts.
 CMD python ./manage.py runserver 0.0.0.0:$PORT
