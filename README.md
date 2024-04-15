@@ -6,8 +6,8 @@ By: John Gray
 
 Kubernetes Application documentation
 <br /><br />
-
-From config.yaml
+## Confgiuration
+### From config.yaml
 | Variable Name | Default Value | Description |
 |---|---|---|
 | STUDENT_NAME | "John Gray" | Name of Student |
@@ -16,22 +16,62 @@ From config.yaml
 | DEBUG | "1" | Debug enabled |
 <br />
 
-From secret.yaml
+### From secret.yaml
 | Variable Name | Default Value | Description |
 |---|---|---|
-| SECRET_KEY | "this-is-a-bad-key" | text key to securing signed data |
+| SECRET_KEY | this-is-a-bad-key | text key to securing signed data |
+| POSTGRES_USER | mysiteuser | PostgresSQL user name |
+| POSTGRES_PASSWORD | this-is-a-bad-password | PostgresSQL password |
 
+    Note: _The values for POSTGRES_USER and POSTGRES_PASSWORD listed in the secret.yaml file MUST match the values for username and postgresPassword listed in the values-postgres.yaml file._
+
+### From values-postgres.yaml
+| Variable Name | Default Value | Description |
+|---|---|---|
+| database | mysite | PostgresSQL database name |
+| username | mysiteuser | PostgresSQL custom user name |
+| password | this-is-a-bad=password | Postgres custom user password |
+| postgresPassword | this-is-a-bad-password | PostgresSQL admin user pasword | 
+<br />
+
+ _Primary.Resources.Requests_
+| Resource Name | Default Value | Description |
+|---|---|---|
+| memory | 512Mi | Minimum memory requirment |
+| cpu | 500m | Minimum CPU requirement |
+| ephemeral-storage | 100Mi | Minimum storage requirement |
 
 <br />
-<h3>Start up</h3>
+
+ _Pirimary.Resources.limits_
+| Resource Name | Default Value | Description |
+|---|---|---|
+| memory | 512Mi | Maximum memory requirment |
+| cpu | 500m | Maximum CPU requirement |
+| ephemeral-storage | 100Mi | Maximum storage requirement |
+
+<br />
+
+## Start up 
+helm install postgres oci://registry-1.docker.io/bitnamicharts/postgresql --values values-postgres.yaml<br />
 kubectl apply -f deployment/
 <br />
 
-<h3>Initialization</h3>
+## Initialization
+Initialize the Django web application.<br />
 kubectl exec --stdin --tty pod/mysite-pod -- /bin/bash<br />
 python manage.py migrate<br />
 python manage.py createsuperuser
 
-<h3>Deletion</h3>
-kubectl delete service/mysite-svc pod/mysite-pod
+## Shutdown/Deletion
+kubectl delete service/mysite-svc pod/mysite-pod<br />
+helm uninstall postgres<br/><br />
 
+ Note: _The PostgresSQL database install via helm will allocate an eight Gig Persistent Volume Claim (PVC) which will remain post helm uninstall. This PVC must be manually removed via kubectl, k9s or cloud specific cmd._<br />
+ For example: kubectl delete pvc/data-postgres-postgresql-0
+
+## PostgresSQL Database Access/Diagnostics 
+kubectl port-forward service/postgres-postgresql 5432:5432<br />
+psql -h localhost -U mysiteuser mysite<br /><br />
+Note: _The database username and password are listed in the values-postgres.yaml file.<br />
+The psql command is part of the postgresql-client package which may be installed via_<br /> sudo apt install postgresql-client

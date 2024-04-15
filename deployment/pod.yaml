@@ -11,7 +11,7 @@ spec:
         claimName: mysite-data
   containers:
   - name: django
-    image: ghcr.io/johngray-git/cis-92:milestone-6.1 
+    image: ghcr.io/johngray-git/cis-92:milestone-7.1 
     ports:
     - containerPort: 8000
     resources:
