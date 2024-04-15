@@ -22,8 +22,9 @@ Kubernetes Application documentation
 | SECRET_KEY | this-is-a-bad-key | text key to securing signed data |
 | POSTGRES_USER | mysiteuser | PostgresSQL user name |
 | POSTGRES_PASSWORD | this-is-a-bad-password | PostgresSQL password |
+<br />
 
-    Note: _The values for POSTGRES_USER and POSTGRES_PASSWORD listed in the secret.yaml file MUST match the values for username and postgresPassword listed in the values-postgres.yaml file._
+Note: _The values for POSTGRES_USER and POSTGRES_PASSWORD listed in the secret.yaml file MUST match the values for username and postgresPassword listed in the values-postgres.yaml file._
 
 ### From values-postgres.yaml
 | Variable Name | Default Value | Description |
