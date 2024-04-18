@@ -12,8 +12,9 @@ Kubernetes Application documentation
 |---|---|---|
 | STUDENT_NAME | "John Gray" | Name of Student |
 | SITE_NAME | "*" | Name of site |
-| DATA_DITR | "/data" | Database location |
 | DEBUG | "1" | Debug enabled |
+| POSTGRES_DB | "mysite" | Database name |
+| POSTGRES_HOSTNAME | postgres-postresql | name of host |
 <br />
 
 ### From secret.yaml
