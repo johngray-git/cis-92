@@ -141,5 +141,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# For CLoud Shell Only
-CSRF_TRUSTED_ORIGINS = ['https://*.cloudshell.dev']
+# For CLoud Shell Only  &  GitHub Codespaces
+CSRF_TRUSTED_ORIGINS = [ 'https://*.cloudshell.dev', 
+                         'https://*.github.dev',
+                         'https://localhost:8000' ]
