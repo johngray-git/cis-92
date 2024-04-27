@@ -68,7 +68,7 @@ python manage.py migrate<br />
 python manage.py createsuperuser
 
 ## Shutdown/Deletion
-kubectl delete service/mysite-svc pod/mysite-pod<br />
+kubectl delete -f deployemnt/<br />
 helm uninstall postgres<br/><br />
 
  Note: _The PostgresSQL database install via helm will allocate an eight Gig Persistent<br/> 
