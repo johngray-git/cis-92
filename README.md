@@ -23,6 +23,7 @@ Kubernetes Application documentation
 | SECRET_KEY | this-is-a-bad-key | text key to securing signed data |
 | POSTGRES_USER | mysiteuser | PostgresSQL user name |
 | POSTGRES_PASSWORD | this-is-a-bad-password | PostgresSQL password |
+| POSTGRES_DB | mysite | Name of postgres DB|
 <br />
 
 Note: _The values for POSTGRES_USER and POSTGRES_PASSWORD listed in the<br/> 
