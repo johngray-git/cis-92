@@ -3,30 +3,52 @@ kind: Deployment
 metadata:
   name: mysite-deployment
   labels:
-    app: mysite
+    function: app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mysite
+      function: app
   template:
     metadata:
       name: mysite-pod
       labels:
-        app: mysite
+        function: app
     spec:
       containers:
       - name: django
-        image: ghcr.io/johngray-git/cis-92:milestone-7.1 
+        image: ghcr.io/johngray-git/cis-92:milestone-13.1 
         ports:
         - containerPort: 8000
+
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8000
+            httpHeaders:
+            - name: host
+              value: localhost
+#          initialDelaySeconds: 120
+          failureThreshold: 2
+          periodSeconds: 10
+
+        startupProbe:
+          httpGet:
+            path: /
+            port: 8000
+            httpHeaders:
+            - name: host
+              value: localhost
+          failureThreshold: 30
+          periodSeconds: 10
+
         resources:
           requests:
-            cpu: 250m 
+            cpu: 500m 
             memory: 512Mi
             ephemeral-storage: 10Mi
           limits:
-            cpu: 250m 
+            cpu: 500m 
             memory: 512Mi
             ephemeral-storage: 10Mi
         envFrom:
