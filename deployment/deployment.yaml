@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: django
-        image: ghcr.io/johngray-git/cis-92:milestone-13.1 
+        image: ghcr.io/johngray-git/cis-92:milestone-13.2 
         ports:
         - containerPort: 8000
 
