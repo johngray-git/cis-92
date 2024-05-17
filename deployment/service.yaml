@@ -3,7 +3,8 @@ kind: Service
 metadata:
   name: mysite-svc
 spec:
-  type: LoadBalancer
+  type: NodePort
+# type: LoadBalancer
   selector:
     function: app
   ports:

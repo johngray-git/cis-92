@@ -11,7 +11,7 @@ Kubernetes Application documentation
 | Variable Name | Default Value | Description |
 |---|---|---|
 | STUDENT_NAME | "John Gray" | Name of Student |
-| SITE_NAME | "*" | Name of site |
+| SITE_NAME | "www.jhg-cis-92.cis-92.com" | Name of site |
 | DEBUG | "1" | Debug enabled |
 | POSTGRES_DB | "mysite" | Database name |
 | POSTGRES_HOSTNAME | postgres-postresql | name of host |
