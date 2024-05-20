@@ -58,6 +58,8 @@ in the values-postgres.yaml file._
 
 ## Start up 
 helm install postgres oci://registry-1.docker.io/bitnamicharts/postgresql --values values-postgres.yaml<br />
+helm install external-dns external-dns/external-dns --values values-edns.yaml<br />
+helm install cert-manager jetstack/cert-manager --values values-cert-manager.yaml<br />
 kubectl apply -f deployment/
 <br />
 
@@ -69,7 +71,11 @@ python manage.py createsuperuser
 
 ## Shutdown/Deletion
 kubectl delete -f deployemnt/<br />
+helm uninstall cert-manager <br />
+helm uninstall external-dns<br />
 helm uninstall postgres<br/><br />
+
+When in doubt the command helm list will display the running charts.
 
  Note: _The PostgresSQL database install via helm will allocate an eight Gig Persistent<br/> 
  Volume Claim (PVC) which will remain post helm uninstall. This PVC must be manually<br/>
