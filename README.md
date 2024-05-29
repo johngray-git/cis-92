@@ -71,7 +71,7 @@ python manage.py migrate<br />
 python manage.py createsuperuser
 
 ## Shutdown/Deletion
-kubectl delete -f deployemnt/<br />
+kubectl delete -f deployment/<br />
 kubectl delete -f cluster-issuer.yaml<br />
 helm uninstall cert-manager <br />
 helm uninstall external-dns<br />
