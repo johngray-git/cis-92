@@ -77,6 +77,9 @@ helm uninstall external-dns<br />
 kubectl delete -f deployment/<br />
 helm uninstall postgres<br/><br />
 
+Optional: Remember to remove the persistentvolumeclaim if desired.  The simplest way is to use k9s.
+
+
 When in doubt the command helm list will display the running charts.
 
  Note: _The PostgresSQL database install via helm will allocate an eight Gig Persistent<br/> 
