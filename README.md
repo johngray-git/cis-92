@@ -58,10 +58,10 @@ in the values-postgres.yaml file._
 
 ## Start up 
 helm install postgres oci://registry-1.docker.io/bitnamicharts/postgresql --values values-postgres.yaml<br />
+kubectl apply -f deployment/
 helm install external-dns external-dns/external-dns --values values-edns.yaml<br />
 helm install cert-manager jetstack/cert-manager --values values-cert-manager.yaml<br />
 kubectl apply -f cluster-issuer.yaml<br />
-kubectl apply -f deployment/
 <br />
 
 ## Initialization
