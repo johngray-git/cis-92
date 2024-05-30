@@ -71,10 +71,10 @@ python manage.py migrate<br />
 python manage.py createsuperuser
 
 ## Shutdown/Deletion
-kubectl delete -f deployment/<br />
 kubectl delete -f cluster-issuer.yaml<br />
 helm uninstall cert-manager <br />
 helm uninstall external-dns<br />
+kubectl delete -f deployment/<br />
 helm uninstall postgres<br/><br />
 
 When in doubt the command helm list will display the running charts.
